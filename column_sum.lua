@@ -14,7 +14,7 @@ function column_sum(flow)
 
   
     local function accumulate(aggregation, nextitem)
-        for k, v in pairs(nexitem.co_occurrence) do
+        for k, v in map.pairs(nextitem.co_occurrence) do
             if aggregation[k] == nil then
                 aggregation[k] = v
             else
@@ -26,7 +26,7 @@ function column_sum(flow)
  
     
     local function reducer( this, that )
-        for k, v in pairs(that) do
+        for k, v in map.pairs(that) do
             if this[k] == nil then
                 this[k] = v
             else
