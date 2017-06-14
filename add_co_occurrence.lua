@@ -3,13 +3,15 @@ local GD
 
 function add_co_occurrence(rec, ids)
     
-    info("Maaat"..tostring(ids))
     co_occurrence = rec['co_occurrence']
-    info(tostring(co_occurrence))
+    if co_occurrence == nil then
+        co_occurrence = map()
+    end
     size = list.size(ids)
     for i=1,size do
-        info(tostring(ids[i]))
-        info(tostring(co_occurrence[ids[i]]))
+        if co_occurrence[ids[i]] == nil then
+            co_occurrence[ids[i]] = 0
+        end
         co_occurrence[ids[i]] = co_occurrence[ids[i]] + 1
     end
     rec['co_occurrence'] = co_occurrence
