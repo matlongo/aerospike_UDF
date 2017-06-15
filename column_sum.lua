@@ -9,16 +9,19 @@ function column_sum(flow)
         if touple["co_occurrence"] == nil then
             touple["co_occurrence"] = map()
         end
+        touple["id"] = rec["id"]
         return touple
     end
 
   
     local function accumulate(aggregation, nextitem)
         for k, v in map.pairs(nextitem.co_occurrence) do
-            if aggregation[k] == nil then
-                aggregation[k] = v
-            else
-                aggregation[k] = aggregation[k] + v
+            if k != nextitem.id then
+                if aggregation[k] == nil then
+                    aggregation[k] = v
+                else
+                    aggregation[k] = aggregation[k] + v
+                end
             end
         end
         return aggregation
